@@ -1,0 +1,6 @@
+//data base config
+
+<?php 
+  mysql_connect('localhost','root') OR die('SERVER NOT FOUND');
+  mysql_select_db('crud') OR die('Database NOT FOUND');
+?>
