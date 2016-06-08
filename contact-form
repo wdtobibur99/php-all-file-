@@ -1,0 +1,241 @@
+////
+
+<?php
+	$year="";
+	$mileage = "";
+	$make = 
+	$license= "";
+	$model= "";
+	
+	$typeof= "";
+	$date= "";
+	$time= "";
+	$do= "";
+	
+	
+	$firstname= "";
+	$lastname= "";
+	$work= "";
+	$best= "";
+	$fax= "";
+	$email= "";
+	$address= "";
+	$city= "";
+	$pcontact= "";
+	$state= "";
+	$comment= "";
+	$code= "";
+	
+	$to="ronicse2021@gmail.com";
+	
+if(isset($_POST["submit"]))
+{
+
+	
+	$year = $_POST["year"];
+	$mileage = $_POST["mileage"];
+	$make = $_POST["make"];
+	$license=$_POST["license"];
+	$model=$_POST["model"];
+	
+	$typeof=$_POST["typeof"];
+	$date=$_POST["date"];
+	$time=$_POST["time"];
+	
+	if(isset($_POST["do"]))
+		$do=$_POST["do"];
+	
+	
+	$firstname=$_POST["firstname"];
+	$lastname=$_POST["lastname"];
+	$work=$_POST["work"];
+	$best=$_POST["best"];
+	$fax=$_POST["fax"];
+	$email=$_POST["email"];
+	$address=$_POST["address"];
+	$city=$_POST["city"];
+	$pcontact=$_POST["pcontact"];
+	$state=$_POST["state"];
+	$comment=$_POST["comment"];
+	$code=$_POST["code"];
+	
+	
+	$vehicle ="Vehicle Information----------\n\n";
+	$vehicle .= "Year: $year \n\n";
+	$vehicle .= "Mileage: $mileage \n\n";
+	$vehicle .= "Make: $make \n\n";
+	$vehicle .= "License Plate: $license \n\n";
+	$vehicle .= "Moder:$model \n\n";
+	
+	
+	$body ="Body Shop Information-----------\n\n";
+	$body .="Type of Service Needed : $typeof \n\n";
+	$body .="Preferred Appointment Date : $date \n\n";
+	$body .="Preferred Appointment Time: $time \n\n";
+	$body .="Do You Require : $do \n\n";
+	
+	
+	$contact ="Contact Information------\n\n";
+	$contact .="First Name :$firstname\n\n";
+	$contact .="Last Name :$lastname\n\n";
+	$contact .="work phone :$work\n\n";
+	$contact .="Best Contact Number :$best\n\n";
+	$contact .="Fax :$fax\n\n";
+	$contact .="Email :$email\n\n";
+	$contact .="Address :$address\n\n";
+	$contact .="City :$city\n\n";
+	$contact .="Preffered Contact :$pcontact\n\n";
+	$contact .="State :$state\n\n";
+	$contact .="Comment :$comment\n\n";
+	$contact .="Zip code :$code\n\n";
+	
+	
+	$subject="User All Information Find Here......\n\n";
+	$message = "$vehicle\n\n";
+	$message .= "$body\n\n";
+	$message .= "$contact\n\n";
+	$headers = "Reply-To: $email\n\n";
+	
+	$mail_sent = mail($to,$subject,$message,$headers);
+	echo $mail_sent ? "Success, mail sent!" : "Mail failed";
+	
+/*
+	$cn=mysqli_connect("localhost","root","","form");
+	$sql="insert into client()valuse()";
+	if(mysqli_query($cn,$sql))
+	{
+		print 'Users All Data Saved in Database';	
+	}
+	*/
+	}
+?>
+
+
+<form method="post" action="">
+<fieldset>
+<legend>Vehicle Information</legend>
+Year<br />
+<input type="text" name="year" value="" required>  <br /><br />
+
+Mileage<br />
+<input type="text" name="mileage" value=""  required><br /><br />
+                
+Make<br />
+<input type="text" name="make" value=""  required><br /><br />
+
+License Plate<br />
+<input type="text" name="license" value=""  required><br /><br />
+
+Model<br />
+<input type="text" name="model" value=""  required><br />
+
+</fieldset>
+<br />
+
+<fieldset>
+<legend>Body Shop Information</legend>
+Type of Service Needed<br />
+<textarea name="typeof"  required></textarea><br />
+<br />
+
+
+Preferred Appointment Date<br />
+<input type="text" name="date" value=""  required>
+<h6>please enter a calender date that is best for you</h6>
+<br />
+
+Preferred Appointment Time<br />
+<select name="time"  required>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+</select><br />
+<br />
+
+
+Do You Require<br />
+<input type="radio" name="do" value=""  required>Shuttle Service
+<br />
+<input type="radio" name="do" value=""  required>Rental Car
+<br />
+<input type="radio" name="do" value=""  required>Wait in Lounge
+<br />
+</fieldset>
+
+<br />
+
+<fieldset>
+<legend>Contact Information</legend>
+First Name<br />
+<input type="text" name="firstname" value=""  required><br /><br />
+
+Last Name<br />
+<input type="text" name="lastname" value=""  required><br /><br />
+
+Work Phone<br />
+<input type="text" name="work" value=""  required><br /><br />
+
+Best Contact Number<br />
+<input type="text" name="best" value=""  required><br /><br />
+
+Fax<br />
+<input type="text" name="fax" value=""  required><br /><br />
+
+Email Address<br />
+<input type="email" name="email" value=""  required><br /><br />
+
+Address<br />
+<input type="text" name="address" value=""  required><br /><br />
+
+City<br />
+<input type="text" name="city" value=""  required><br /><br />
+
+Preferred Contact<br />
+<select name="pcontact"  required>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+</select><br />
+<br />
+
+State<br />
+<select name="state" value="" required>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+	<option value="anytime">Anytime</option>
+	<option value="morning">Morning</option>
+	<option value="mid-day">Mid-day</option>
+	<option value="afternoon">Afternoon</option>
+	<option value="evening">Evening</option>
+</select><br />
+<br />
+
+Comments<br />
+<textarea name="comment"  required></textarea><br /><br />
+
+Zip Code<br />
+<input type="text" name="code" value=""  required><br />
+<br />
+
+</fieldset>
+<br />
+<input type="submit" name="submit" value="Submit Appointment Schedule Request"><br />
+
+</form>
